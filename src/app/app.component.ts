@@ -16,11 +16,12 @@ export class AppComponent {
   isBusy = false;
 
   testNgObj: Observable<any> = this.httpservice.testngGet();
-
   cuke1: Observable<any> = this.httpservice.cukeGet();
+  protObj: Observable<any> = this.httpservice.protractorGet();
 
   myCukeResults = [];
   myNGResults = [];
+  myProtResults = "";
 
   getTestNG1() {
     this.isBusy = true;
@@ -35,6 +36,14 @@ export class AppComponent {
       resp => { this.myCukeResults = resp },
       err => console.log("massive error"),
       () => { this.isBusy = false; console.log(this.myCukeResults) });
+  }
+
+  getProtractor() {
+    this.isBusy = true;
+    this.protObj.subscribe(
+      resp => { this.myProtResults = resp },
+      err => {console.log(err); this.myProtResults = err.error.text; this.isBusy = false; },
+      () => { this.isBusy = false; console.log(this.myProtResults) });
   }
 
   show() {

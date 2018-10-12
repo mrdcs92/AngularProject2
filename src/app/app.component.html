@@ -3,6 +3,7 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+</div>
 
 <div class="container">
   <div class="row">
@@ -19,12 +20,16 @@
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
         aria-selected="false">Cucumber</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#protract" role="tab" aria-controls="protract"
+          aria-selected="false">Protractor</a>
+      </li>
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="row">
         <div class="col-md-10 mx-auto">
-          <button class="btn btn-primary" (click)="getTestNG1()" [disabled]="isBusy">testng tests</button>
+          <button class="btn btn-primary" (click)="getTestNG1()" [disabled]="isBusy">TestNG Tests</button>
           <ul>
             <li *ngFor="let ngTest of myNGResults">
               <ul>
@@ -56,7 +61,7 @@
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="row">
         <div class="col-md-10 mx-auto">
-          <button class="btn btn-primary" (click)="getCuke1()" [disabled]="isBusy">cuke tests</button>
+          <button class="btn btn-primary" (click)="getCuke1()" [disabled]="isBusy">Cucumber Tests</button>
           <ul id="cukeList">
             <li *ngFor="let cukeTest of myCukeResults">
               <p>{{cukeTest.name}}</p>
@@ -79,6 +84,15 @@
         </div>
       </div>
     </div>
+
+    <div class="tab-pane fade" id="protract" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row">
+          <div class="col-md-10">
+            <button class="btn btn-primary" (click)="getProtractor()" [disabled]="isBusy">Protractor Tests</button>
+            <p>{{myProtResults}}</p>
+          </div>
+        </div>
+      </div>
 
   </div>
 </div>
