@@ -3,12 +3,82 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+
+    </div>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">TestNG</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Cucumber</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <button class="btn btn-primary" (click)="getTestNG1()" [disabled]="isBusy">testng tests</button>
+          <ul>
+            <li *ngFor="let ngTest of myNGResults">
+              <ul>
+                <li>Passed Tests</li>
+                <ul>
+                  <li *ngFor="let passedTest of ngTest.passed">
+                    {{passedTest.name}}
+                  </li>
+                </ul>
+                <li>Failed Tests</li>
+                <ul>
+                  <li *ngFor="let failedTest of ngTest.failed">
+                    {{failedTest.name}}
+                  </li>
+                </ul>
+                <li>Skipped Tests</li>
+                <ul>
+                  <li *ngFor="let skippedTest of ngTest.skipped">
+                    {{failedTest.name}}
+                  </li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <button class="btn btn-primary" (click)="getCuke1()" [disabled]="isBusy">cuke tests</button>
+          <ul id="cukeList">
+            <li *ngFor="let cukeTest of myCukeResults">
+              <p>{{cukeTest.name}}</p>
+              <ul>
+                <li *ngFor="let element of cukeTest.elements">
+                  <p>{{element.keyword}}</p>
+                  <ul>
+                    <li *ngFor="let step of element.steps">
+                      <p>{{step.name}}</p>
+                      <ul>
+                        <li>{{step.result.duration}}</li>
+                        <li>{{step.result.status}}</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<button (click) = "show()">click for tests</button>
-<p>{{mydisplay}}</p>
-
-<button (click) ="getTestNG1()">testng tests</button>
-<button (click) ="getCuke1()">cuke tests</button>
-
